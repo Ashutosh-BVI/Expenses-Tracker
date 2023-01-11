@@ -12,7 +12,7 @@ const ExpenseForm = ({ onSaveExpData }) => {
     const expenseData = {
       title: title,
       amount: amount,
-      date: date,
+      date: new Date(date),
     };
     onSaveExpData(expenseData);
 

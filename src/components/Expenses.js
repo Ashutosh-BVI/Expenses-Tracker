@@ -5,14 +5,15 @@ import ExpensesFilter from "./ExpensesFilter";
 import { useState } from "react";
 
 function Expenses({ expenses }) {
-  const [filteredYear, setFilteredYear] = useState(2020);
+  const [filteredYear, setFilteredYear] = useState("2020");
+  // console.log(expenses[0].date.getFullYear());
+  const filerExpenses = (expense) => {
+    if (expense.date.getFullYear().toString() === filteredYear) {
+      return expense;
+    }
+  };
 
-  // console.log(expenses.date.getFullYear());
-  const filterExpenses = expenses.filter((year) => {
-    console.log(year);
-    return year.date.getFullYear() === filteredYear;
-  });
-
+  const filterExpenses = expenses.filter(filerExpenses);
   return (
     <div>
       <Card className="expenses">
